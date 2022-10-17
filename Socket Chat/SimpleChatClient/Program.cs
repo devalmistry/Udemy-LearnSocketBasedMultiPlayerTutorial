@@ -26,8 +26,11 @@ namespace SimpleChatClient
 
             //Sending Message to the Server
 
-            string msgSend = Console.ReadLine();
-            clientSocket.Send(Encoding.UTF8.GetBytes(msgSend));
+            while (true)
+            {
+                string msgSend = Console.ReadLine();
+                clientSocket.Send(Encoding.UTF8.GetBytes(msgSend));
+            }
 
             Console.ReadKey();
             clientSocket.Close();
