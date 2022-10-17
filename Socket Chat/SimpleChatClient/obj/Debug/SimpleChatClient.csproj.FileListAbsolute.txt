@@ -1,0 +1,7 @@
+D:\Udemy Course\SocketTut\Udemy-LearnSocketBasedMultiPlayerTutorial\Socket Chat\SimpleChatClient\bin\Debug\SimpleChatClient.exe.config
+D:\Udemy Course\SocketTut\Udemy-LearnSocketBasedMultiPlayerTutorial\Socket Chat\SimpleChatClient\bin\Debug\SimpleChatClient.exe
+D:\Udemy Course\SocketTut\Udemy-LearnSocketBasedMultiPlayerTutorial\Socket Chat\SimpleChatClient\bin\Debug\SimpleChatClient.pdb
+D:\Udemy Course\SocketTut\Udemy-LearnSocketBasedMultiPlayerTutorial\Socket Chat\SimpleChatClient\obj\Debug\SimpleChatClient.csprojAssemblyReference.cache
+D:\Udemy Course\SocketTut\Udemy-LearnSocketBasedMultiPlayerTutorial\Socket Chat\SimpleChatClient\obj\Debug\SimpleChatClient.csproj.CoreCompileInputs.cache
+D:\Udemy Course\SocketTut\Udemy-LearnSocketBasedMultiPlayerTutorial\Socket Chat\SimpleChatClient\obj\Debug\SimpleChatClient.exe
+D:\Udemy Course\SocketTut\Udemy-LearnSocketBasedMultiPlayerTutorial\Socket Chat\SimpleChatClient\obj\Debug\SimpleChatClient.pdb
