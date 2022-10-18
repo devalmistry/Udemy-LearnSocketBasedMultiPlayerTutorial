@@ -12,7 +12,7 @@ namespace GameServer01.Servers
     {
         private Socket clientSocket;
         private Server server;
-        private Message msg = new Message(); 
+        private Message msg = new Message();
 
         public Client(Socket clientSocket, Server server)
         {
@@ -20,15 +20,21 @@ namespace GameServer01.Servers
             this.server = server;
         }
 
+        public void Send(RequestCode requestCode, string data)
+        {
+            byte[] bytes = Message.PackData(requestCode,data);
+            clientSocket.Send(bytes);
+        }
+
         public void start()
         {
-            clientSocket.BeginReceive(msg.Data, msg.StartIndex,msg.RemainSize, SocketFlags.None, ReceiveCallBack, null);
+            clientSocket.BeginReceive(msg.Data, msg.StartIndex, msg.RemainSize, SocketFlags.None, ReceiveCallBack, null);
         }
 
         private void ReceiveCallBack(IAsyncResult ar)
         {
             int count = clientSocket.EndReceive(ar);
-            if (count==0)
+            if (count == 0)
             {
                 Close();
             }
@@ -38,7 +44,7 @@ namespace GameServer01.Servers
 
         private void Close()
         {
-            if (clientSocket!=null)
+            if (clientSocket != null)
             {
                 clientSocket.Close();
             }
@@ -46,7 +52,7 @@ namespace GameServer01.Servers
         }
 
 
-        public void OnProcessMessage(RequestCode requestCode, ActionCode actionCode, string data )
+        public void OnProcessMessage(RequestCode requestCode, ActionCode actionCode, string data)
         {
             server.HandleRequest(requestCode, actionCode, data, this);
         }

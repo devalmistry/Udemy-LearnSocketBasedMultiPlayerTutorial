@@ -49,7 +49,7 @@ namespace GameServer01.Servers
 
         public void SendResponse(Client client, RequestCode requestCode, string data)
         {
-
+            client.Send(requestCode, data);
         }
 
         public void HandleRequest(RequestCode requestCode, ActionCode actionCode, string data, Client client)

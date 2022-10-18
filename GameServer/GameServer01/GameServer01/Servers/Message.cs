@@ -53,5 +53,14 @@ namespace GameServer01.Servers
                 return;
             }
         }
+
+        public static byte[] PackData(RequestCode requestCode, string data)
+        {
+            byte[] requestCodeByte = BitConverter.GetBytes((int)requestCode);
+            byte[] dataBytes = Encoding.UTF8.GetBytes(data);
+            int newDataAmount = requestCodeByte.Length + dataBytes.Length;
+            byte[] newDataAmountBytes = BitConverter.GetBytes(newDataAmount);
+            return newDataAmountBytes.Concat(requestCodeByte).ToArray().Concat(dataBytes).ToArray();
+        }
     }
 }
