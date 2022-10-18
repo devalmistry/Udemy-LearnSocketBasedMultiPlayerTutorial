@@ -10,6 +10,7 @@ namespace GameServer01.Servers
 {
     class Message
     {
+
         public byte[] data = new byte[1024];
         private int startIndex = 0;
 
