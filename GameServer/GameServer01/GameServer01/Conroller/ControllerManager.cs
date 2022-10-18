@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Common;
 using System.Reflection;
+using GameServer01.Servers;
 
 namespace GameServer01.Conroller
 {
@@ -12,9 +13,11 @@ namespace GameServer01.Conroller
     {
         private Dictionary<RequestCode, BaseController> controllerDict = new Dictionary<RequestCode, BaseController>();
 
-        public ControllerManager()
-        {
+        private Server server;
 
+        public ControllerManager(Server server)
+        {
+            this.server = server;
         }
 
         private void OnInIt()
@@ -23,7 +26,7 @@ namespace GameServer01.Conroller
             controllerDict.Add(defaultController.RequestCode, new DefaultController());
         }
 
-        private void HandleRequest(RequestCode requestCode, ActionCode actionCode, string data)
+        private void HandleRequest(RequestCode requestCode, ActionCode actionCode, string data, Client client)
         {
             BaseController controller;
             bool isGet = controllerDict.TryGetValue(requestCode, out controller);
@@ -42,9 +45,16 @@ namespace GameServer01.Conroller
                 Console.WriteLine("There is no corresponding Methis: " + methodName);
                 return;
             }
-
-            object[] parameters = new object[] { data };
+            object[] parameters = new object[] { data, client, server };
             object o = mi.Invoke(controller, parameters);
+
+            if (o == null)
+            {
+                return;
+            }
+            server.SendResponse(client, requestCode,o as string);
+
+
         }
     }
 }

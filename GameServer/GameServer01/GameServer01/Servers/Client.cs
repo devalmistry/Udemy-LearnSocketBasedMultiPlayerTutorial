@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.Net.Sockets;
 
 
-namespace GameServer01.Server
+namespace GameServer01.Servers
 {
     class Client
     {

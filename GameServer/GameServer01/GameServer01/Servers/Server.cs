@@ -5,9 +5,10 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Net;
 using System.Net.Sockets;
+using Common;
+using GameServer01.Conroller;
 
-
-namespace GameServer01.Server
+namespace GameServer01.Servers
 {
     class Server
     {
@@ -15,9 +16,12 @@ namespace GameServer01.Server
         Socket serverSocket;
         private List<Client> clientList = new List<Client>();
 
+        ControllerManager controller;
+
         public Server(String ipStr, int port)
         {
             iPEndPoint = new IPEndPoint(IPAddress.Parse(ipStr), port);
+            controller = new ControllerManager(this);
         }
 
         public void Start()
@@ -41,6 +45,11 @@ namespace GameServer01.Server
             {
                 clientList.Remove(client);
             }
+        }
+
+        public void SendResponse(Client client, RequestCode requestCode, string data)
+        {
+
         }
     }
 }
