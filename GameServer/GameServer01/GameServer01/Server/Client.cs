@@ -12,6 +12,7 @@ namespace GameServer01.Server
     {
         private Socket clientSocket;
         private Server server;
+        private Message msg = new Message(); 
 
         public Client(Socket clientSocket, Server server)
         {
@@ -21,7 +22,7 @@ namespace GameServer01.Server
 
         public void start()
         {
-            clientSocket.BeginReceive(null, 0, 0, SocketFlags.None, ReceiveCallBack, null);
+            clientSocket.BeginReceive(msg.Data, msg.StartIndex,msg.RemainSize, SocketFlags.None, ReceiveCallBack, null);
         }
 
         private void ReceiveCallBack(IAsyncResult ar)
@@ -31,6 +32,7 @@ namespace GameServer01.Server
             {
                 Close();
             }
+            msg.ReadMessge(count);
             start();
         }
 
