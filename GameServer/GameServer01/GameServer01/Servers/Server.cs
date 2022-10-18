@@ -51,5 +51,10 @@ namespace GameServer01.Servers
         {
 
         }
+
+        public void HandleRequest(RequestCode requestCode, ActionCode actionCode, string data, Client client)
+        {
+            controller.HandleRequest(requestCode, actionCode, data, client);
+        }
     }
 }

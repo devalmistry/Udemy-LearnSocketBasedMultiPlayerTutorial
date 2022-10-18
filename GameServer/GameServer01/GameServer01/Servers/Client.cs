@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Net.Sockets;
-
+using Common;
 
 namespace GameServer01.Servers
 {
@@ -32,7 +32,7 @@ namespace GameServer01.Servers
             {
                 Close();
             }
-            msg.ReadMessge(count);
+            msg.ReadMessge(count, OnProcessMessage);
             start();
         }
 
@@ -43,6 +43,12 @@ namespace GameServer01.Servers
                 clientSocket.Close();
             }
             server.RemoveClient(this);
+        }
+
+
+        public void OnProcessMessage(RequestCode requestCode, ActionCode actionCode, string data )
+        {
+            server.HandleRequest(requestCode, actionCode, data, this);
         }
     }
 }
