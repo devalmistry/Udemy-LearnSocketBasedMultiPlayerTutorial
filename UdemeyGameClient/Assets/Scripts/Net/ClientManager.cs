@@ -21,8 +21,8 @@ public class ClientManager : BaseManager
     {
         try
         {
-            Start();
             clientSocket.Close();
+            Start();
         }
         catch (Exception e)
         {
@@ -39,11 +39,13 @@ public class ClientManager : BaseManager
     private void ReciveCallback(IAsyncResult ar)
     {
         int count = clientSocket.EndReceive(ar);
-        msg.ReadMessge(count, OnProcessDataCallback);    
+        msg.ReadMessge(count, OnProcessDataCallback);
+        Start();
     }
 
-    private void OnProcessDataCallback(RequestCode requestCode,string Data) {
-
+    private void OnProcessDataCallback(RequestCode requestCode, string Data)
+    {
+        gameFacade.HandleResponse(requestCode, Data);
     }
 
     public override void OnDestroy()
@@ -55,8 +57,7 @@ public class ClientManager : BaseManager
         }
         catch (Exception e)
         {
-
-            Debug.Log(e);
+             Debug.Log(e);
         }
     }
     public void SendRequest(RequestCode requestCode, ActionCode actionCode, string data)

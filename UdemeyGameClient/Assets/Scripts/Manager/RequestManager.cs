@@ -33,4 +33,11 @@ public class RequestManager : BaseManager
     {
 
     }
+
+    public void HandleResponse(RequestCode requestCode, string data)
+    {
+        BaseRequest baseRequest = requestDict.TryGet<RequestCode,BaseRequest>(requestCode);
+        baseRequest.OnResponse(data);
+      
+    }
 }
