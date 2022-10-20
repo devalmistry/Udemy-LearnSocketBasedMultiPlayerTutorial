@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Net.Sockets;
 using UnityEngine;
-
+using Common;
 public class ClientManager : BaseManager
 {
 
@@ -14,7 +14,7 @@ public class ClientManager : BaseManager
 
     public override void OnDestroy()
     {
-        clientSocket = new Socket(AddressFamily.InterNetwork,SocketType.Stream,ProtocolType.Tcp);
+        clientSocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
         try
         {
             clientSocket.Connect(IP, PORT);
@@ -22,7 +22,7 @@ public class ClientManager : BaseManager
         catch (Exception e)
         {
 
-            Debug.Log (e);
+            Debug.Log(e);
         }
     }
 
@@ -37,5 +37,11 @@ public class ClientManager : BaseManager
 
             Debug.Log(e);
         }
+    }
+
+    public void SendRequest(RequestCode requestCode, ActionCode actionCode, string data)
+    {
+        byte[] bytes = Message.PackData(requestCode, actionCode, data);
+        clientSocket.Send(bytes);
     }
 }

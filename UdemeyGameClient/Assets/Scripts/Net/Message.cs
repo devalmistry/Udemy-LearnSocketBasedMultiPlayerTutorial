@@ -60,4 +60,15 @@ public class Message : MonoBehaviour
         byte[] newDataAmountBytes = BitConverter.GetBytes(newDataAmount);
         return newDataAmountBytes.Concat(requestCodeByte).ToArray().Concat(dataBytes).ToArray();
     }
+
+    public static byte[] PackData(RequestCode requestCode,ActionCode actionCode, string data)
+    {
+        byte[] requestCodeByte = BitConverter.GetBytes((int)requestCode);
+        byte[] actionCodeBytes  = BitConverter.GetBytes((int)actionCode);
+        byte[] dataBytes = Encoding.UTF8.GetBytes(data);
+        int newDataAmount = requestCodeByte.Length + dataBytes.Length+ actionCodeBytes.Length;
+        byte[] newDataAmountBytes = BitConverter.GetBytes(newDataAmount);
+        return newDataAmountBytes.Concat(requestCodeByte).ToArray().Concat(dataBytes).ToArray().Concat(actionCodeBytes).ToArray();
+    }
+
 }
