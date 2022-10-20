@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Common;
 
 public class RequestManager : BaseManager
 {
@@ -8,6 +9,20 @@ public class RequestManager : BaseManager
     {
 
     }
+
+    private Dictionary<RequestCode, BaseRequest> requestDict = new Dictionary<RequestCode, BaseRequest>();
+
+    public void AddRequest(RequestCode requestCode, BaseRequest baseRequest)
+    {
+
+        requestDict.Add(requestCode, baseRequest);
+
+    }
+    public void RemoveRequest(RequestCode requestCode)
+    {
+        requestDict.Remove(requestCode);
+    }
+
 
     public override void OnDestroy()
     {

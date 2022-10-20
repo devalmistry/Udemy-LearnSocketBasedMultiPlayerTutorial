@@ -1,3 +1,4 @@
+using Common;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,14 +12,31 @@ public class GameFacade : MonoBehaviour
     private UIManager uIManager;
     private CameraManager cameraManager;
 
+    private static GameFacade _instance;
+
+    public static GameFacade Instance
+    {
+        get { return _instance; }
+    }
+
+    private void Awake()
+    {
+        if (_instance != null)
+        {
+            Destroy(this.gameObject);
+            return;
+        }
+        _instance = this;
+    }
+
     private void Start()
     {
-        clientManager = new ClientManager();
-        audioManager = new AudioManager();
-        playerManager = new PlayerManager();
-        requestManager = new RequestManager();
-        uIManager = new UIManager();
-        cameraManager = new CameraManager();
+        clientManager = new ClientManager(this);
+        audioManager = new AudioManager(this);
+        playerManager = new PlayerManager(this);
+        requestManager = new RequestManager(this);
+        uIManager = new UIManager(this);
+        cameraManager = new CameraManager(this);
 
         InItManagers();
     }
@@ -46,5 +64,15 @@ public class GameFacade : MonoBehaviour
         requestManager.OnDestroy();
         uIManager.OnDestroy();
         cameraManager.OnDestroy();
+    }
+
+    public void AddRequest(RequestCode requestCode, BaseRequest baseRequest)
+    {
+        requestManager.AddRequest(requestCode, baseRequest);
+    }
+
+    public void RemoveRequest(RequestCode requestCode)
+    {
+        requestManager.RemoveRequest(requestCode);
     }
 }
