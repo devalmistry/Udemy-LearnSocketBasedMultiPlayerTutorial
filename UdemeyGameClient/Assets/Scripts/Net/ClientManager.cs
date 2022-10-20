@@ -12,6 +12,10 @@ public class ClientManager : BaseManager
     Socket clientSocket;
     Message msg = new Message();
 
+    public ClientManager(GameFacade facade) : base(facade)
+    {
+
+    }
 
     public override void OnInit()
     {

@@ -11,23 +11,14 @@ public class UIManager:BaseManager
     {
 
     }
+ 
+ 
 
     public override void OnInit()
     {
 
     }
-
-    public static UIManager Instance
-    {
-        get
-        {
-            if (_instance == null)
-            {
-                _instance = new UIManager();
-            }
-            return _instance;
-        }
-    }
+ 
 
     private Transform canvasTransform;
     private Transform CanvasTransform
@@ -44,9 +35,9 @@ public class UIManager:BaseManager
     private Dictionary<UIPanelType, string> panelPathDict;
     private Dictionary<UIPanelType, BasePanel> panelDict;
     private Stack<BasePanel> panelStack;
-   
 
-    public UIManager()
+
+    public UIManager(GameFacade facade) : base(facade)
     {
         ParseUIPanelTypeJson();
     }

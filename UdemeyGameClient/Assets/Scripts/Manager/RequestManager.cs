@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class RequestManager : BaseManager
 {
+    public RequestManager(GameFacade facade) : base(facade)
+    {
+
+    }
+
     public override void OnDestroy()
     {
 

@@ -4,6 +4,15 @@ using UnityEngine;
 
 public class BaseManager : MonoBehaviour
 {
+
+    protected GameFacade gameFacade;
+
+    public BaseManager(GameFacade facade) {
+
+        this.gameFacade = facade;
+    } 
+
+
     public virtual void OnInit() { }
 
     public virtual void OnDestroy() { }

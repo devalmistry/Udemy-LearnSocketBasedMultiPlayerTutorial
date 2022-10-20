@@ -13,4 +13,9 @@ public class PlayerManager : BaseManager
     {
 
     }
+
+    public PlayerManager(GameFacade facade) : base(facade)
+    {
+
+    }
 }
