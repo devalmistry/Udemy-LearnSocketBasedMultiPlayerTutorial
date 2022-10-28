@@ -11,6 +11,6 @@
 "path": "UIPanel/RegisterPanel"},
 
 {"panelTypeString": "Message",
-"path": "UIPanel/MessagePanel"},
+"path": "UIPanel/MessagePanel"}
 ]
 }

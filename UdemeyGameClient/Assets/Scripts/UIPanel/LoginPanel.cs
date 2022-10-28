@@ -1,18 +1,16 @@
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class LoginPanel : BasePanel
 {
-    // Start is called before the first frame update
-    void Start()
+    public override void OnEnter()
     {
-        
-    }
+        transform.localScale = Vector3.zero;
+        transform.DOScale(1,0.3f);
+        transform.localPosition = new Vector3(1000, 0, 0);
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        transform.DOLocalMove(Vector3.zero,0.5f);
     }
 }

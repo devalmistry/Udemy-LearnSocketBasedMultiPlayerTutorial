@@ -1,18 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class StartPanel : BasePanel
 {
-    // Start is called before the first frame update
-    void Start()
+    private Button loginButton;
+    public override void OnEnter()
     {
-        
-    }
+        loginButton = transform.Find("LoginButton").GetComponent<Button>();
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        loginButton.onClick.AddListener(OnLoginClick);
+    }
+    private void OnLoginClick() {
+        uiMng.PushPanel(UIPanelType.Login);
+
     }
 }

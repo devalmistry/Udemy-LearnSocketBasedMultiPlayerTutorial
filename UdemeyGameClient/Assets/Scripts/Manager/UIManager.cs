@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System;
 
-public class UIManager:BaseManager
+public class UIManager : BaseManager
 {
     private static UIManager _instance;
 
@@ -13,12 +13,13 @@ public class UIManager:BaseManager
     {
 
     }
-  
+
     public override void OnInit()
     {
-
+        PushPanel(UIPanelType.Start);
+        PushPanel(UIPanelType.Message);
     }
- 
+
 
     private Transform canvasTransform;
     private Transform CanvasTransform
@@ -56,7 +57,7 @@ public class UIManager:BaseManager
         BasePanel panel = GetPanel(panelType);
         panel.OnEnter();
         panelStack.Push(panel);
-        
+
     }
 
     public void PopPanel()
@@ -84,10 +85,9 @@ public class UIManager:BaseManager
 
         if (panel == null)
         {
-          
             string path = panelPathDict.TryGet(panelType);
             GameObject instPanel = GameObject.Instantiate(Resources.Load(path)) as GameObject;
-            instPanel.transform.SetParent(CanvasTransform,false);
+            instPanel.transform.SetParent(CanvasTransform, false);
             instPanel.GetComponent<BasePanel>().UIMng = this;
             panelDict.Add(panelType, instPanel.GetComponent<BasePanel>());
             return instPanel.GetComponent<BasePanel>();
@@ -99,9 +99,10 @@ public class UIManager:BaseManager
 
     }
 
-    public void ShowMessage(string msg) {
+    public void ShowMessage(string msg)
+    {
 
-        if (msg==null)
+        if (msg == null)
         {
             Debug.Log("Message is Empty");
             return;
@@ -109,7 +110,8 @@ public class UIManager:BaseManager
         msgPanel.ShowMessage(msg);
     }
 
-    public void InjectMsgPanel(MessagePanel msgPanel) {
+    public void InjectMsgPanel(MessagePanel msgPanel)
+    {
         this.msgPanel = msgPanel;
     }
 
@@ -127,7 +129,7 @@ public class UIManager:BaseManager
 
         UIPanelTypeJson jsonObject = JsonUtility.FromJson<UIPanelTypeJson>(ta.text);
 
-        foreach (UIPanelInfo info in jsonObject.infoList) 
+        foreach (UIPanelInfo info in jsonObject.infoList)
         {
             //Debug.Log(info.panelType);
             panelPathDict.Add(info.panelType, info.path);

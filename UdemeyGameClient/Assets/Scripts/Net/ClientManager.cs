@@ -57,7 +57,7 @@ public class ClientManager : BaseManager
         }
         catch (Exception e)
         {
-             Debug.Log(e);
+            Debug.Log(e);
         }
     }
     public void SendRequest(RequestCode requestCode, ActionCode actionCode, string data)

@@ -7,7 +7,7 @@ public class BasePanel : MonoBehaviour {
 
     public UIManager UIMng {
 
-        set { UIMng = value; }
+        set { uiMng = value; }
     }
 
     public virtual void OnEnter()
