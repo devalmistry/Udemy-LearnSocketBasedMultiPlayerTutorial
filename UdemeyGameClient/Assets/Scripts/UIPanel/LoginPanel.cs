@@ -20,8 +20,7 @@ public class LoginPanel : BasePanel
         closeButton = transform.Find("CloseButton").GetComponent<Button>();
         closeButton.onClick.AddListener(OnCloseClick);
     }
-
-    private void OnCloseClick() {
+     private void OnCloseClick() {
         transform.DOScale(0, 0.3f);
         transform.DOLocalMove(new Vector3(1000, 0, 0),0.3f);
     }
