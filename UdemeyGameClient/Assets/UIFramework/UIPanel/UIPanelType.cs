@@ -5,5 +5,8 @@ using System;
 
 public enum UIPanelType  {
     None,
+    Start,
+    Login,
+    Register,
     Message
 }
