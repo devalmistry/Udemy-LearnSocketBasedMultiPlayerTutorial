@@ -7,6 +7,8 @@ public class UIManager:BaseManager
 {
     private static UIManager _instance;
 
+    private MessagePanel msgPanel;
+
     public override void OnDestroy()
     {
 
@@ -86,7 +88,7 @@ public class UIManager:BaseManager
             string path = panelPathDict.TryGet(panelType);
             GameObject instPanel = GameObject.Instantiate(Resources.Load(path)) as GameObject;
             instPanel.transform.SetParent(CanvasTransform,false);
-     
+            instPanel.GetComponent<BasePanel>().UIMng = this;
             panelDict.Add(panelType, instPanel.GetComponent<BasePanel>());
             return instPanel.GetComponent<BasePanel>();
         }
@@ -96,6 +98,21 @@ public class UIManager:BaseManager
         }
 
     }
+
+    public void ShowMessage(string msg) {
+
+        if (msg==null)
+        {
+            Debug.Log("Message is Empty");
+            return;
+        }
+        msgPanel.ShowMessage(msg);
+    }
+
+    public void InjectMsgPanel(MessagePanel msgPanel) {
+        this.msgPanel = msgPanel;
+    }
+
 
     [Serializable]
     class UIPanelTypeJson

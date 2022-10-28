@@ -14,6 +14,7 @@ public class MessagePanel : BasePanel
     {
         text = GetComponent<TextMeshProUGUI>();
         text.enableCulling = false;
+        uiMng.InjectMsgPanel(this);
     }
 
     public void ShowMessage(string msg)

@@ -3,6 +3,13 @@ using System.Collections;
 
 public class BasePanel : MonoBehaviour {
 
+    protected UIManager uiMng;
+
+    public UIManager UIMng {
+
+        set { UIMng = value; }
+    }
+
     public virtual void OnEnter()
     {
 
