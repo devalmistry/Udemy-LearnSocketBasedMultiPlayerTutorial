@@ -66,19 +66,19 @@ public class GameFacade : MonoBehaviour
         cameraManager.OnDestroy();
     }
 
-    public void AddRequest(RequestCode requestCode, BaseRequest baseRequest)
+    public void AddRequest(ActionCode actionCode, BaseRequest baseRequest)
     {
-        requestManager.AddRequest(requestCode, baseRequest);
+        requestManager.AddRequest(actionCode, baseRequest);
     }
 
-    public void RemoveRequest(RequestCode requestCode)
+    public void RemoveRequest(ActionCode actionCode)
     {
-        requestManager.RemoveRequest(requestCode);
+        requestManager.RemoveRequest(actionCode);
     }
 
-    public void HandleResponse(RequestCode requestCode, string data)
+    public void HandleResponse(ActionCode actionCode, string data)
     {
-        requestManager.HandleResponse(requestCode, data);
+        requestManager.HandleResponse(actionCode, data);
     }
 
     public void ShowMessage(string msg)

@@ -6,10 +6,12 @@ using Common;
 public class BaseRequest : MonoBehaviour
 {
     private RequestCode requestCode = RequestCode.None;
+    private ActionCode actionCode = ActionCode.None;
+
 
     public virtual void Awake()
     {
-        GameFacade.Instance.AddRequest(requestCode, this);
+        GameFacade.Instance.AddRequest(actionCode, this);
     }
 
     public virtual void SendRequest() { }
@@ -18,6 +20,6 @@ public class BaseRequest : MonoBehaviour
 
     public virtual void OnDestroy()
     {
-        GameFacade.Instance.RemoveRequest(requestCode);
+        GameFacade.Instance.RemoveRequest(actionCode);
     }
 }

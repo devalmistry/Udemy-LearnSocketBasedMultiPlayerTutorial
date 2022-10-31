@@ -26,9 +26,9 @@ namespace GameServer01.Servers
             this.mySqlConn = ConnHelper.Connect();
         }
 
-        public void Send(RequestCode requestCode, string data)
+        public void Send(ActionCode actionCode, string data)
         {
-            byte[] bytes = Message.PackData(requestCode, data);
+            byte[] bytes = Message.PackData(actionCode, data);
             clientSocket.Send(bytes);
         }
 

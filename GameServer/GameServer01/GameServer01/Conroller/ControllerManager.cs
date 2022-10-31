@@ -52,7 +52,7 @@ namespace GameServer01.Conroller
             {
                 return;
             }
-            server.SendResponse(client, requestCode,o as string);
+            server.SendResponse(client, actionCode,o as string);
 
 
         }

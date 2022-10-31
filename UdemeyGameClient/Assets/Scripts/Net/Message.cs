@@ -29,7 +29,7 @@ public class Message : MonoBehaviour
         }
     }
 
-    public void ReadMessge(int newDataAmount, Action<RequestCode, string> onProcessDataCallback)
+    public void ReadMessge(int newDataAmount, Action<ActionCode, string> onProcessDataCallback)
     {
         startIndex += newDataAmount;
         if (startIndex <= 4)
@@ -39,9 +39,10 @@ public class Message : MonoBehaviour
         int count = BitConverter.ToInt32(data, 0);
         if (startIndex - 4 >= count)
         {
-            RequestCode requestCode = (RequestCode)BitConverter.ToInt32(data, 4);
-            ActionCode actionCode = (ActionCode)BitConverter.ToInt32(data, 8);
+           
+            ActionCode actionCode = (ActionCode)BitConverter.ToInt32(data, 4);
             string s = Encoding.UTF8.GetString(data, 8, count - 4);
+            onProcessDataCallback(actionCode, s);
             Array.Copy(data, count + 4, data, 0, startIndex - 4 - count);
             startIndex = count + 4;
         }

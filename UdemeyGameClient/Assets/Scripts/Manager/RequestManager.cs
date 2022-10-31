@@ -10,17 +10,17 @@ public class RequestManager : BaseManager
 
     }
 
-    private Dictionary<RequestCode, BaseRequest> requestDict = new Dictionary<RequestCode, BaseRequest>();
+    private Dictionary<ActionCode, BaseRequest> requestDict = new Dictionary<ActionCode, BaseRequest>();
 
-    public void AddRequest(RequestCode requestCode, BaseRequest baseRequest)
+    public void AddRequest(ActionCode actionCode, BaseRequest baseRequest)
     {
 
-        requestDict.Add(requestCode, baseRequest);
+        requestDict.Add(actionCode, baseRequest);
 
     }
-    public void RemoveRequest(RequestCode requestCode)
+    public void RemoveRequest(ActionCode actionCode)
     {
-        requestDict.Remove(requestCode);
+        requestDict.Remove(actionCode);
     }
 
 
@@ -34,9 +34,9 @@ public class RequestManager : BaseManager
 
     }
 
-    public void HandleResponse(RequestCode requestCode, string data)
+    public void HandleResponse(ActionCode actionCode, string data)
     {
-        BaseRequest baseRequest = requestDict.TryGet<RequestCode,BaseRequest>(requestCode);
+        BaseRequest baseRequest = requestDict.TryGet<ActionCode, BaseRequest>(actionCode);
         baseRequest.OnResponse(data);
       
     }

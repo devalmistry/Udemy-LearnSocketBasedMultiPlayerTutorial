@@ -43,9 +43,9 @@ public class ClientManager : BaseManager
         Start();
     }
 
-    private void OnProcessDataCallback(RequestCode requestCode, string Data)
+    private void OnProcessDataCallback(ActionCode actionCode, string Data)
     {
-        gameFacade.HandleResponse(requestCode, Data);
+        gameFacade.HandleResponse(actionCode, Data);
     }
 
     public override void OnDestroy()
