@@ -1,3 +1,4 @@
+using Common;
 using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
@@ -20,10 +21,10 @@ public class LoginPanel : BasePanel
     public override void OnEnter()
     {
         transform.localScale = Vector3.zero;
-        transform.DOScale(1,0.3f);
+        transform.DOScale(1, 0.3f);
         transform.localPosition = new Vector3(1000, 0, 0);
 
-        transform.DOLocalMove(Vector3.zero,0.5f);
+        transform.DOLocalMove(Vector3.zero, 0.5f);
 
         usernameIF = transform.Find("UserNameLabel/UserNameInput").GetComponent<TMP_InputField>();
         passwordIF = transform.Find("PasswordLabel/PasswordInput").GetComponent<TMP_InputField>();
@@ -51,7 +52,7 @@ public class LoginPanel : BasePanel
             msg += "Please fill the Password blank";
         }
 
-        if (msg!="")
+        if (msg != "")
         {
             uiMng.ShowMessage(msg);
             return;
@@ -60,14 +61,31 @@ public class LoginPanel : BasePanel
         loginRequest.SendRequest(usernameIF.text, passwordIF.text);
     }
 
-    private void OnRegisterClick() {
+    private void OnRegisterClick()
+    {
 
     }
 
-
-
-     private void OnCloseClick() {
+    private void OnCloseClick()
+    {
         transform.DOScale(0, 0.3f);
-        transform.DOLocalMove(new Vector3(1000, 0, 0),0.3f);
+        transform.DOLocalMove(new Vector3(1000, 0, 0), 0.3f);
+    }
+
+    public override void OnExit()
+    {
+        gameObject.SetActive(false);
+    }
+
+    public void OnLoginResponse(ReturnCode returnCode)
+    {
+        if (returnCode == ReturnCode.success)
+        {
+            //TODO
+        }
+        else
+        {
+            uiMng.ShowMessage("Wrong password or username");
+        }
     }
 }
