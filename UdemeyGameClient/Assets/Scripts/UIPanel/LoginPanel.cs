@@ -15,6 +15,8 @@ public class LoginPanel : BasePanel
     private Button enterButton;
     private Button registerButton;
 
+    private LoginRequest loginRequest;
+
     public override void OnEnter()
     {
         transform.localScale = Vector3.zero;
@@ -33,6 +35,7 @@ public class LoginPanel : BasePanel
 
         closeButton = transform.Find("CloseButton").GetComponent<Button>();
         closeButton.onClick.AddListener(OnCloseClick);
+        loginRequest = GetComponent<LoginRequest>();
     }
 
 
@@ -54,7 +57,7 @@ public class LoginPanel : BasePanel
             return;
         }
 
-        //TODO
+        loginRequest.SendRequest(usernameIF.text, passwordIF.text);
     }
 
     private void OnRegisterClick() {

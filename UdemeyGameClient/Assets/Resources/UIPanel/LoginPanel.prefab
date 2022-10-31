@@ -1317,13 +1317,14 @@ GameObject:
   - component: {fileID: 652373694682061599}
   - component: {fileID: 652373694682061598}
   - component: {fileID: 743944144}
+  - component: {fileID: 6053302838051320099}
   m_Layer: 5
   m_Name: LoginPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &652373694682061597
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1397,6 +1398,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 324a9db814d78e249a05e46f9d72e2e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &6053302838051320099
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 652373694682061596}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5d44062a1e3d544099d4044f9c45d30, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &652373694988113635
