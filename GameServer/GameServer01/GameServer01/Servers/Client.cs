@@ -19,6 +19,10 @@ namespace GameServer01.Servers
     
         private MySqlConnection mySqlConn;
 
+        public MySqlConnection MySqlConn {
+            get { return mySqlConn; }
+        }
+
         public Client(Socket clientSocket, Server server)
         {
             this.clientSocket = clientSocket;
