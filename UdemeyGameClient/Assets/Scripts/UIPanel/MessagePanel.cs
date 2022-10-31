@@ -19,6 +19,7 @@ public class MessagePanel : BasePanel
 
     public void ShowMessage(string msg)
     {
+        text.CrossFadeAlpha(1, 0.2f, false);
         text.text = msg;
         text.enableCulling = true;
         Invoke("Hide", showTime);
