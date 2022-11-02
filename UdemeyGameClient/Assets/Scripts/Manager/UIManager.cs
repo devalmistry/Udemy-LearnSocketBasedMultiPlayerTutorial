@@ -110,6 +110,11 @@ public class UIManager : BaseManager
         msgPanel.ShowMessage(msg);
     }
 
+
+    public void ShowMessageSync(string msg)
+    {
+        msgPanel.ShowMessageSync(msg);
+    }
     public void InjectMsgPanel(MessagePanel msgPanel)
     {
         this.msgPanel = msgPanel;

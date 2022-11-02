@@ -81,11 +81,12 @@ public class LoginPanel : BasePanel
     {
         if (returnCode == ReturnCode.success)
         {
+            uiMng.ShowMessageSync("Login Successfull");
             //TODO
         }
         else
         {
-            uiMng.ShowMessage("Wrong password or username");
+            uiMng.ShowMessageSync("Wrong password or username");
         }
     }
 }
