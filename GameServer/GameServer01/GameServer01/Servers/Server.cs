@@ -36,7 +36,9 @@ namespace GameServer01.Servers
         {
             Socket clientSocket = serverSocket.EndAccept(ar);
             Client client = new Client(clientSocket, this);
+            client.start();
             clientList.Add(client);
+            serverSocket.BeginAccept(AcceptCallBack, null);
         }
 
         public void RemoveClient(Client client)

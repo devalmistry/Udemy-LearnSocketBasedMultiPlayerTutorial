@@ -24,6 +24,7 @@ namespace GameServer01.Conroller
         {
             DefaultController defaultController = new DefaultController();
             controllerDict.Add(defaultController.RequestCode, new DefaultController());
+            controllerDict.Add(RequestCode.User, new UserController());
         }
 
         public void HandleRequest(RequestCode requestCode, ActionCode actionCode, string data, Client client)
@@ -34,7 +35,7 @@ namespace GameServer01.Conroller
             if (!isGet)
             {
                 Console.WriteLine("Can't Found controller for: " + requestCode);
-
+                return;
             }
 
             string methodName = Enum.GetName(typeof(ActionCode), actionCode);

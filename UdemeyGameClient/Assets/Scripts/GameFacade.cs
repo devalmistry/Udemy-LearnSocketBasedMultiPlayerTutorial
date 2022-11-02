@@ -30,25 +30,25 @@ public class GameFacade : MonoBehaviour
     }
 
     private void Start()
-    {
-        clientManager = new ClientManager(this);
-        audioManager = new AudioManager(this);
-        playerManager = new PlayerManager(this);
-        requestManager = new RequestManager(this);
-        uIManager = new UIManager(this);
-        cameraManager = new CameraManager(this);
-
+    { 
         InItManagers();
     }
 
     private void InItManagers()
     {
+        clientManager = new ClientManager(this);
+        playerManager = new PlayerManager(this);
+        requestManager = new RequestManager(this);
+        cameraManager = new CameraManager(this);
+        uIManager = new UIManager(this);
+        audioManager = new AudioManager(this);
+
         clientManager.OnInit();
-        audioManager.OnInit();
         playerManager.OnInit();
         requestManager.OnInit();
-        uIManager.OnInit();
         cameraManager.OnInit();
+        uIManager.OnInit();
+        audioManager.OnInit();
     }
 
     private void OnDestroy()

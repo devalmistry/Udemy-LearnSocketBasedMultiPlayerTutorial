@@ -10,11 +10,26 @@ public class MessagePanel : BasePanel
 
     private int showTime = 1;
 
+    private string message = null;
+
     public override void OnEnter()
     {
         text = GetComponent<TextMeshProUGUI>();
         text.enableCulling = false;
         uiMng.InjectMsgPanel(this);
+    }
+
+    public void ShowMessageSync(string msg) {
+        message = msg;
+    }
+
+    private void Update()
+    {
+        if (message!=null)
+        {
+            ShowMessage(message);
+            message = null;
+        }     
     }
 
     public void ShowMessage(string msg)
